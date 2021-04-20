@@ -59,11 +59,6 @@ yum -y install firewall-config
 <details>   
   <summary><mark>展开查看</mark></summary>   
   <pre><code>
-  System.out.println("Hello");   
-  </code></pre>
-</details>
-
-```shell
 Status Options
   --state             				 			# 返回并打印防火墙状态
   --reload             							# 重新加载防火墙并保留状态信息
@@ -212,9 +207,96 @@ IPSet Options
   --add-rich-rule=<rule>  # 为区域添加丰富的语言规则“规则” [P] [Z] [T]
   --remove-rich-rule=<rule> #  从区域中删除丰富语言规则“规则” [P] [Z]
   --query-rich-rule=<rule>   #  返回是否为区域添加了丰富的语言规则“规则”[P] [Z]
-```
 
+Options to Handle Bindings of Interfaces
+  --list-interfaces    # 列出绑定到区域的接口 [P] [Z]
+  --add-interface=<interface>   # 将<interface>绑定到区域 [P] [Z]
+  --change-interface=<interface>   # 更改<interface>绑定到的区域 [P] [Z]
+  --query-interface=<interface>   # 查询<interface>是否绑定到区域 [P] [Z]
+  --remove-interface=<interface>   # 从区域中删除<interface>的绑定 [P] [Z]
 
+Options to Handle Bindings of Sources
+  --list-sources       # 列出绑定到区域的源 [P] [Z]
+  --add-source=<source>[/<mask>]|<MAC>|ipset:<ipset>   # 将源绑定到区域 [P] [Z]
+  --change-source=<source>[/<mask>]|<MAC>|ipset:<ipset>   # 源绑定到的更改区域 [Z]
+  --query-source=<source>[/<mask>]|<MAC>|ipset:<ipset>   # 查询源是否绑定到区域 [P] [Z]
+  --remove-source=<source>[/<mask>]|<MAC>|ipset:<ipset> #  从区域中删除源的绑定 [P] [Z]
 
+Options to Handle Bindings of Sources
+  --list-sources      # 列出绑定到区域的源 [P] [Z]
+  --add-source=<source>[/<mask>]|<MAC>|ipset:<ipset>   # 将源绑定到区域 [P] [Z]
+  --change-source=<source>[/<mask>]|<MAC>|ipset:<ipset>   # 源绑定到的更改区域 [Z]
+  --query-source=<source>[/<mask>]|<MAC>|ipset:<ipset>   # 查询源是否绑定到区域 [P] [Z]
+  --remove-source=<source>[/<mask>]|<MAC>|ipset:<ipset>   # 从区域中删除源的绑定 [P] [Z]
 
+Helper Options
+  --new-helper=<helper> --module=<module> [--family=<family>]   # 添加一个新的助手 [P only]
+  --new-helper-from-file=<filename> [--name=<helper>]   # 从文件中添加具有可选名称的新帮助程序 [P only]
+  --delete-helper=<helper>   # 删除现有的助手 [P only]
+  --load-helper-defaults=<helper>   #  加载助手默认设置 [P only]
+  --info-helper=<helper>   # 打印有关帮手的信息
+  --path-helper=<helper>   # 打印助手的文件路径 [P only]
+  --get-helpers        #  打印预定义的助手
+  --helper=<helper> --set-description=<description>   # 设置新的帮助说明 [P only]
+  --helper=<helper> --get-description  #  打印帮助的描述 [P only]
+  --helper=<helper> --set-short=<description>  #  为助手设置新的简短描述 [P only]
+  --helper=<helper> --get-short   # 打印助手的简短说明 [P only]
+  --helper=<helper> --add-port=<portid>[-<portid>]/<protocol>   # 向助手添加新端口 [P only]
+  --helper=<helper> --remove-port=<portid>[-<portid>]/<protocol>  # 从助手中删除端口[P only]
+  --helper=<helper> --query-port=<portid>[-<portid>]/<protocol>  # 返回是否为助手添加了端口 [P only]
+  --helper=<helper> --get-ports   # 列出助手的端口 [P only]
+  --helper=<helper> --set-module=<module>   # 将模块设置为助手 [P only]
+  --helper=<helper> --get-module   # 从助手获取模块 [P only]
+  --helper=<helper> --set-family={ipv4|ipv6|}   # 为家人定下帮手 [P only]
+  --helper=<helper> --get-family   # 从助手获取模块 [P only]
+
+Direct Options
+  --direct            # 所有直接选项的第一个选项
+  --get-all-chains    # 获取所有链 [P]
+  --get-chains {ipv4|ipv6|eb} <table>   # 将所有链条添加到表中 [P]
+  --add-chain {ipv4|ipv6|eb} <table> <chain>   # 在表中添加新链 [P]
+  --remove-chain {ipv4|ipv6|eb} <table> <chain>  # 从表中移除链 [P]
+  --query-chain {ipv4|ipv6|eb} <table> <chain>   # 返回链是否已添加到表中 [P]
+  --get-all-rules  # 获取所有规则 [P]
+  --get-rules {ipv4|ipv6|eb} <table> <chain>   #  获取所有添加到表链中的规则 [P]
+  --add-rule {ipv4|ipv6|eb} <table> <chain> <priority> <arg>...    # 将规则添加到表中的链 [P]
+  --remove-rule {ipv4|ipv6|eb} <table> <chain> <priority> <arg>...   # 从表中的链中删除具有优先级的规则 [P]
+  --remove-rules {ipv4|ipv6|eb} <table> <chain>  # 从表中的链中删除规则 [P]
+  --query-rule {ipv4|ipv6|eb} <table> <chain> <priority> <arg>...   # 返回是否将具有优先级的规则添加到表的链中 [P]
+  --passthrough {ipv4|ipv6|eb} <arg>...   # 传递命令（由firewalld跟踪）
+  --get-all-passthroughs   # 获取所有跟踪的通过规则 [P]
+  --get-passthroughs {ipv4|ipv6|eb} <arg>...   # 跟踪通过规则 [P]
+  --add-passthrough {ipv4|ipv6|eb} <arg>...   # 添加新的跟踪通过规则 [P]
+  --remove-passthrough {ipv4|ipv6|eb} <arg>...   # 删除跟踪的直通规则 [P]
+  --query-passthrough {ipv4|ipv6|eb} <arg>...   # 返回是否已添加跟踪的直通规则 [P]
+
+Lockdown Options
+  --lockdown-on        # 启用锁定.
+  --lockdown-off       # 禁用锁定.
+  --query-lockdown    # 查询是否启用了锁定
+
+Lockdown Whitelist Options
+  --list-lockdown-whitelist-commands   # 列出白名单上的所有命令行 [P]
+  --add-lockdown-whitelist-command=<command>   # 将命令添加到白名单 [P]
+  --remove-lockdown-whitelist-command=<command>   # 从白名单中删除命令 [P]
+  --query-lockdown-whitelist-command=<command>  # 查询命令是否在白名单上 [P]
+  --list-lockdown-whitelist-contexts  # 列出白名单上的所有上下文 [P]
+  --add-lockdown-whitelist-context=<context>   # 将上下文上下文添加到白名单 [P]
+  --remove-lockdown-whitelist-context=<context>  # 从白名单中删除上下文 [P]
+  --query-lockdown-whitelist-context=<context>  # 查询上下文是否在白名单上 [P]
+  --list-lockdown-whitelist-uids  # 列出白名单上的所有用户ID [P]
+  --add-lockdown-whitelist-uid=<uid>   # 将用户ID uid添加到白名单 [P]
+  --remove-lockdown-whitelist-uid=<uid>   # 从白名单中删除用户ID uid [P]
+  --query-lockdown-whitelist-uid=<uid>  # 查询用户id uid是否在白名单中 [P]
+  --list-lockdown-whitelist-users   # 列出白名单上的所有用户名 [P]
+  --add-lockdown-whitelist-user=<user>  # 将用户名user添加到白名单 [P]
+  --remove-lockdown-whitelist-user=<user>   # 从白名单中删除用户名user [P]
+  --query-lockdown-whitelist-user=<user>   # 查询用户名“ user”是否在白名单中 [P]
+
+Panic Options
+  --panic-on           # 启用紧急模式
+  --panic-off          # 禁用紧急模式
+  --query-panic        # 查询是否启用了应急模式 
+  </code></pre>
+</details>
 
