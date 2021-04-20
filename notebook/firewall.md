@@ -56,9 +56,7 @@ yum -y install firewall-config
 
 ## firewall-cmd操作
 
-<details>   
-  <summary><mark>展开查看</mark></summary>   
-  <pre><code>
+```shell
 Status Options
   --state             				 			# 返回并打印防火墙状态
   --reload             							# 重新加载防火墙并保留状态信息
@@ -67,15 +65,15 @@ Status Options
   --check-config       							# 检查永久性配置是否有错误
   
 Log Denied Options
-  --get-log-denied     							# 打印被拒绝的日志
-  --set-log-denied=<value>					# 设置日志拒绝值
+  --get-log-denied    # 打印被拒绝的日志
+  --set-log-denied=<value>	# 设置日志拒绝值
 
 Automatic Helpers Options
-  --get-automatic-helpers						# 打印自动助手值
-  --set-automatic-helpers=<value>		# 设置自动助手值
+  --get-automatic-helpers		# 打印自动助手值
+  --set-automatic-helpers=<value>	 # 设置自动助手值
 
 Permanent Options
-  --permanent          							# 永久设置一个选项（可用于标有[P]的选项）
+  --permanent      # 永久设置一个选项（可用于标有[P]的选项）
 
 Zone Options
   --get-default-zone   # 打印连接和接口的默认区域
@@ -297,6 +295,4 @@ Panic Options
   --panic-on           # 启用紧急模式
   --panic-off          # 禁用紧急模式
   --query-panic        # 查询是否启用了应急模式 
-  </code></pre>
-</details>
-
+```
