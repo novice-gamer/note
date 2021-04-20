@@ -2,17 +2,17 @@
 
 ## **应用场景**
 
-```
+```shell
 HTTP 测试
-	定义 Request Header 信息
-	判断 Http status / Http Respones Header / Http Body 内容
+  定义 Request Header 信息
+  判断 Http status / Http Respones Header / Http Body 内容
 TCP 测试
-	业务组件端口状态监听
-	应用层协议定义与监听
+  业务组件端口状态监听
+  应用层协议定义与监听
 ICMP 测试
-	主机探活机制
-	POST 测试
-	接口联通性
+  主机探活机制
+  POST 测试
+  接口联通性
 SSL 证书过期时间
 ```
 
@@ -80,8 +80,6 @@ systemctl start blackbox_exporter.service
 tcp6       0      0 :::9115                 :::*                    LISTEN      15781/blackbox_expo
 ```
 
-
-
 ## 加入Prometheus进行监控
 
 示例：
@@ -142,33 +140,27 @@ tcp6       0      0 :::9115                 :::*                    LISTEN      
         replacement: 127.0.0.1:9115
 ```
 
-
-
-
-
-
-
 ## 加入grafana
 
 导入blackbox_exporter模板：
 
-> 此模板为9965号模板，数据源选择Prometheus 模板下载地址 https://grafana.com/grafana/dashboards/9965
+> 此模板为9965号模板，数据源选择Prometheus 模板下载地址 <https://grafana.com/grafana/dashboards/9965>
 
-![](https://raw.githubusercontent.com/novice-gamer/picture/master/img/20210412165521.png)
+![image1](https://raw.githubusercontent.com/novice-gamer/picture/master/img/20210412165521.png)
 
-![](https://raw.githubusercontent.com/novice-gamer/picture/master/img/20210412165903.png)
+![image2](https://raw.githubusercontent.com/novice-gamer/picture/master/img/20210412165903.png)
 
 注意，此模板需要安装饼状图插件，否则会出现下面的问题：
 
-![](https://raw.githubusercontent.com/novice-gamer/picture/master/img/20210412170353.png)
+![image3](https://raw.githubusercontent.com/novice-gamer/picture/master/img/20210412170353.png)
 
-插件地址：https://grafana.com/grafana/plugins/grafana-piechart-panel/
+插件地址：<https://grafana.com/grafana/plugins/grafana-piechart-panel/>
 
 ```shell
 [root@VM-0-16-centos bin]# ./grafana-cli plugins install grafana-piechart-panel
 installing grafana-piechart-panel @ 1.6.1
 from: https://grafana.com/api/plugins/grafana-piechart-panel/versions/1.6.1/download
-into: /var/lib/grafana/plugins	# 注意：默认安装路径和安装方法不同，需要复制插件到安装目录的plugins-bundled
+into: /var/lib/grafana/plugins  # 注意：默认安装路径和安装方法不同，需要复制插件到安装目录的plugins-bundled
 
 ✔ Installed grafana-piechart-panel successfully
 
