@@ -54,5 +54,22 @@ v14.16.1
 6.14.12
 ```
 
+# 3. 更新
+
+npm更新：
+
+```shell
+npm install -g npm-check
+```
+
+node更新：
+
+```shell
+# 安装n模块
+npm install -g n
+# 升级
+sudo n stable
+```
+
 
 
