@@ -68,3 +68,51 @@ systemctl enable nginx
 systemctl list-unit-files  | grep nginx
 ```
 
+
+
+# 3. 编译安装
+
+下载NGINX包
+
+```shell
+wget http://nginx.org/download/nginx-1.20.0.tar.gz
+```
+
+安装依赖包
+
+```shell
+yum -y install openssl-devel openssl pcre pcre-devel gcc gcc-c++ make libc glibc glibc-devel  ncurses-devel libaio-devel numactl
+```
+
+创建nginx虚拟用户
+
+```shell
+useradd www -s /sbin/nologin -M
+```
+
+创建安装目录
+
+```shell
+mkdir -p /data/nginx/
+```
+
+解压安装包
+
+```shell
+tar xf nginx-1.10.3.tar.gz
+```
+
+进入解压后的目录
+
+```shell
+cd nginx-1.10.3
+```
+
+编译安装
+
+```shell
+./configure --user=www --group=www --prefix=/data/nginx/ --with-http_stub_status_module --with-http_ssl_module
+
+make && make install
+```
+
